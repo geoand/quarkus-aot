@@ -35,3 +35,10 @@ echo 0 | sudo tee /proc/sys/kernel/kptr_restrict
 The profiles are generated in the `reports/` directory, with distinctive names.
 
 Your browser should automatically open the profiles at the end of the script.
+
+
+## Docker:
+
+```shell
+docker run  --name postgres   -e POSTGRES_USER=postgres   -e POSTGRES_PASSWORD=example   -e POSTGRES_DB=postgres   -p 5432:5432   -v $(pwd)/scripts/ddl.sql:/docker-entrypoint-initdb.d/01-ddl.sql   -v $(pwd)/scripts/data.sql:/docker-entrypoint-initdb.d/02-data.sql   postgres:18
+```
